@@ -1,0 +1,92 @@
+<div class="slider-inn">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul>
+          <li [ngClass]="{'active':stepNumber===1}">
+            <a (click)="tabSwitch(1)">
+              <span>1</span> Host Detail</a>
+          </li>
+          <li [ngClass]="{'active':stepNumber===2}">
+            <a (click)="tabSwitch(2)">
+              <span>2</span> Location</a>
+
+          </li>
+          <li [ngClass]="{'active':stepNumber===3}">
+            <a (click)="tabSwitch(3)">
+              <span>3</span> Listing Detail </a>
+          </li>
+          <li [ngClass]="{'active':stepNumber===4}">
+            <a (click)="tabSwitch(4)">
+              <span>4</span> Highlights</a>
+          </li>
+          <li [ngClass]="{'active':stepNumber===5}">
+            <a (click)="tabSwitch(5)">
+              <span>5</span> Upload Images/Videos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="inner-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8">
+        <div class="form-inner">
+          <div class="form-top">
+            Step {{stepNumber}} of 5
+            <div class="clear"></div>
+          </div>
+
+          <app-host-detail [hostTypeName]="hostTypeName" [hostModel]="hostModel" [hidden]="stepNumber>1"></app-host-detail>
+          <app-listing [hostModel]="hostModel" [hidden]="stepNumber<3 || stepNumber>3"></app-listing>
+          <app-highlights [hostModel]="hostModel" [hidden]="stepNumber<4 || stepNumber>4"></app-highlights>
+          <div class="form-inner-in" *ngIf="(stepNumber===2) || (stepNumber===5)">
+            <app-location *ngIf="hostModel" [hostModel]="hostModel" [hidden]="stepNumber<2 || stepNumber>2" (onSearchElement)="onMapSearchEvent($event)"
+              (onSetCordinates)="onSetCordinatesEvent($event)"></app-location>
+            <div [hidden]=" stepNumber<5 || stepNumber>5">
+              <app-attachment-image [hostModel]="hostModel"></app-attachment-image>
+              <app-attachment-video [hostModel]="hostModel"></app-attachment-video>
+              <div class="form-data">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="hostModel.isTermAccepted"> I agree to the
+                    <a style="cursor:pointer" (click)="getTermsAndConditions()">Terms & Conditions</a>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-bottom">
+            <button class="button-back" *ngIf="stepNumber>1" (click)="backButton()">Back</button>
+            <button class="button-next" *ngIf="stepNumber!==5" (click)="nextButton()">Next</button>
+            <button class="button-next" *ngIf="stepNumber===5" (click)="submit()">Finish</button>
+            <div class="clear"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+        <app-google-map *ngIf="stepNumber===2" [mapSearch]="mapSearchString" [locationCss]="locationCss" (getCordinatesEvent)="getCordinatesEvent($event)"></app-google-map>
+        <div class="side-con" *ngIf="stepNumber!==2">
+          <h5>Entire Home</h5>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+            from 45 BC, making it over 2000 years old.</p>
+
+          <h5>Only Rooms</h5>
+          <p>Contrary to popular belief,</p>
+
+          <h5>Need help?</h5>
+          <p>Connect with us below</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-login-modal *ngIf="modal" (modalPopupEvent)="modalPopupEvent($event)" [modal]="modal" [modalStatus]="modalStatus"></app-login-modal>
+  <app-terms-and-conditions *ngIf="termAndConditionmodal" [modal]="termAndConditionmodal" (modalPopupEvent)="termsAndConditionsPopupEvent($event)"></app-terms-and-conditions>

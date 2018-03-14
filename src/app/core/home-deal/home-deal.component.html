@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="home-deal-top">
+        <h2>Recommended Deals</h2>
+        <a href="#">View All &raquo;</a>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="row">
+    <li class="col-lg-6" *ngIf="div && div.attachment[0]">
+      <div class="deal-cont">
+        <a href="#">
+          <img style="height:155px; width: 553px" src="{{div.attachment[0].attachmentUrl}}">
+        </a>
+      </div>
+    </li>
+    <li class="col-lg-6" *ngIf="div && div.attachment[1]">
+      <div class="deal-cont">
+        <a href="#">
+          <img style="height:155px; width: 553px" src="{{div.attachment[1].attachmentUrl}}">
+        </a>
+      </div>
+    </li>
+
+    <li class="col-lg-6" *ngIf="div && div.attachment[2]">
+      <div class="deal-cont">
+        <a href="#">
+          <img style="height:155px; width: 553px" src="{{div.attachment[2].attachmentUrl}}">
+        </a>
+      </div>
+    </li>
+
+    <li class="col-lg-6" *ngIf="div && div.attachment[3]">
+      <div class="deal-cont">
+        <a href="#">
+          <img style="height:155px; width: 553px" src="{{div.attachment[3].attachmentUrl}}">
+        </a>
+      </div>
+    </li>
+
+  </ul>
+</div>

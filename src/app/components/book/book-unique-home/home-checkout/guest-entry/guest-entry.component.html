@@ -1,0 +1,39 @@
+<style>
+  .is-error {
+    left: -5px;
+    background: rgba(215, 102, 102, 0.9);
+    padding: .8em;
+    color: #FFF;
+    font-size: 0.8125rem;
+  }
+</style>
+<div class="left-checkout-wrap-head">
+  Please enter Guest Details </div>
+<div class="checkout-form">
+  <div class="form-grp">
+    <label>Guest Name
+      <em style="color: red">*</em>
+    </label>
+    <input OnlyAlphaNumeric="true" maxlength="199" type="text" class="input-text" [(ngModel)]="bookHomeCheckouts.bookStay.guestName"
+      (blur)="checkValidation('name')" />
+  </div>
+  <div class="form-grp">
+    <label>Email
+      <em style="color: red">*</em>
+    </label>
+    <input emailValidate="true" maxlength="249" type="text" class="input-text" [(ngModel)]="bookHomeCheckouts.bookStay.emailId"
+      (blur)="checkValidation('email')" />
+  </div>
+  <div class="form-grp">
+    <label>Mobile No.
+      <em style="color: red">*</em>
+    </label>
+    <input OnlyDecimalNumber="true" maxlength="249" type="text" class="input-text" [(ngModel)]="bookHomeCheckouts.bookStay.contactNumber"
+      (blur)="checkValidation('number')" />
+  </div>
+  <div class="form-grp">
+    <label class="intro-label">Introduce yourself to the Host (Optional) </label>
+    <input OnlyAlphaNumeric="true" maxlength="1999" type="text" class="input-text" [(ngModel)]="bookHomeCheckouts.bookStay.remarks"
+    />
+  </div>
+</div>

@@ -1,0 +1,261 @@
+<div class="cl-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12" style="position:static">
+
+        <a class="cl-logo" [routerLink]="['/']">
+          <img src="assets/images/logo.png">
+        </a>
+
+        <div class="header-left">
+
+          <div class="heaader-top">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <img *ngIf="!user" src="assets/images/user.png" width="33" height="33">
+                <img *ngIf="user" src="assets/images/loggedUser.png" width="33" height="33">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right main-nav" aria-labelledby="dropdownMenuButton">
+                <ul>
+                  <li *ngIf="!user">
+                    <a class="cd-signin" style="cursor:pointer" (click)="opemModal('signIn')">Sign in</a>
+                  </li>
+                  <li *ngIf="!user">
+                    <a class="cd-signup" style="cursor:pointer" (click)="opemModal('signUp')">Sign up</a>
+                  </li>
+                  <li *ngIf="user">
+                    <a href="refer-and-earn.html" style="cursor:pointer"> Refer and Earn</a>
+                  </li>
+                  <li *ngIf="user">
+                    <a href="profile.html" style="cursor:pointer">My profile</a>
+                  </li>
+                  <li *ngIf="user">
+                    <a href="inbox.html" style="cursor:pointer">Inbox</a>
+                  </li>
+                  <li *ngIf="user">
+                    <a href="your-listing.html" style="cursor:pointer">My Listings</a>
+                  </li>
+                  <li *ngIf="user">
+                    <a href="vouchers.html" style="cursor:pointer">Settings</a>
+                  </li>
+                  <li *ngIf="user">
+                    <a (click)="logout()" style="cursor:pointer">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                <span class="form-control-feedback"></span>
+              </div>
+            </form>
+            <div class="header-top-in">
+              <a href="#" id="hideshow"> &nbsp;</a>
+              <ul class="cl-social" id="slcial-tab" style="display:none;">
+                <li class="icon-play">
+                  <a title="play store" href="#" target="_blank"> </a>
+                </li>
+                <li class="icon-app">
+                  <a title="app store" href="#" target="_blank"></a>
+                </li>
+                <li class="icon-facebook">
+                  <a title="Facebook" href="#" target="_blank"> </a>
+                </li>
+                <li class="icon-twitter">
+                  <a title="Twitter" href="#" target="_blank"></a>
+                </li>
+                <li class="icon-google-plus">
+                  <a title="Google+" href="#" target="_blank"></a>
+                </li>
+                <li class="icon-pinterest">
+                  <a title="Pinterest" href="#" target="_blank"></a>
+                </li>
+                <li class="icon-youtube">
+                  <a title="youtube" href="#" target="_blank"></a>
+                </li>
+                <li class="icon-instagram">
+                  <a title="Instagram" href="#" target="_blank"></a>
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+
+          <div class="clear"></div>
+          <div class="menu-container">
+            <div class="menu">
+              <ul>
+                <li>
+                  <span>About Liamtra</span>
+                  <ul>
+                    <li></li>
+                    <li>
+                      <strong>About Liamtra</strong>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/about/liamtra-foundation']">Liamtra Foundation</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/about/leadership-team']">Leadership Team</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/about/testimonials']">Testimonials </a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/about/blog']">Blog</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span>Book with Liamtra</span>
+                  <ul>
+                    <li></li>
+                    <li>
+                      <strong>Book with Liamtra</strong>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/book/unique-homes']">Book a Unique Home</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/book/hotel']">Book a Hotel</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/book/flight']">Book a Flight</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/book/tour']">Book a Tour</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/book/uber']">Book an Uber</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/book/experience']">Book an Experience</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/book/car']">Find a Taxi</a>
+                        </li>
+
+                        <li>
+                          <a [routerLink]="['/book/vendor']">Find a Vendor</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span>Host with Liamtra</span>
+                  <ul>
+                    <li></li>
+                    <li>
+                      <strong>Host with Liamtra</strong>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/host/experience']">Host an Experience</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/host/property']">Host a Unique Home</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/host/business']">Host your Business</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/host/taxi']">Host your Taxi</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/host/reviews']">Reviews By Host </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/host/how-to-host']">Learn How to Host</a>
+                        </li>
+                        <li>
+                          <a [routerLink]="['/host/earn-extra']">Earn Extra Cash from Hosting</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a [routerLink]="['/end-to-end-trip-planning']">End to End trip Planning</a>
+                </li>
+                <li>
+                  <span>Liamtra Media</span>
+                  <ul>
+                    <li></li>
+                    <li>
+                      <strong>Liamtra Media</strong>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/media/founder-vision']">Founder's Vision</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/media/liamtra-inspiration']">Liamtra's Inspiration</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul>
+                        <li>
+                          <a [routerLink]="['/media/virtual-reality-tour']">Virtual Reality Tour</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-login-modal *ngIf="modal" (modalPopupEvent)="modalPopupEvent($event)" [modal]="modal" [modalStatus]="modalStatus"></app-login-modal>

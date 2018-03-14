@@ -1,0 +1,31 @@
+<div class="cl-slider-car">
+  <div class="slider-menu-in">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Book car online</h1>
+          <h2>deep discount on Book a Car in India</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cl-slider-home-in">
+    <app-book-taxi-filter></app-book-taxi-filter>
+  </div>
+
+</div>
+<div class="top-boxs">
+  <app-home-destination *ngIf="div2 && div2.attachment.length>0" [div]="div2"></app-home-destination>
+</div>
+<div class="home-exp">
+  <app-home-experience *ngIf="div4 && div4.attachment.length>0" [div]="div4"></app-home-experience>
+</div>
+<div class="home-deal">
+  <app-home-deal *ngIf="div4 && div4.attachment.length>0" [div]="div4"></app-home-deal>
+</div>
+<div class="testimonial">
+  <app-home-testimonial *ngIf="div5 && div5.review.length>0" [div]="div5"></app-home-testimonial>
+</div>
+<app-home-about></app-home-about>

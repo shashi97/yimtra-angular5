@@ -1,0 +1,125 @@
+<style>
+  .custom-class {
+    color: rgb(29, 4, 4);
+  }
+
+  .custom-class-example .c-token {
+    background: #38d574 !important;
+  }
+
+  .custom-class-example .pure-checkbox label::before {
+    border-color: #38d574 !important;
+  }
+
+  .custom-class-example .pure-checkbox input[type="checkbox"]:checked+label[_ngcontent-c1]:before {
+    background: #38d574 !important;
+  }
+
+  .is-error {
+    left: -5px;
+    background: rgba(215, 102, 102, 0.9);
+    padding: .8em;
+    color: #FFF;
+    font-size: 1rem;
+  }
+</style>
+
+<div class="form-inner-in">
+
+  <div class="form-data">
+    <div class="form-data-in">
+      <label>You would like to List
+        <em style="color: red">*</em>
+      </label>
+      <select name="selectedList" [(ngModel)]="hostModel.hostStayDetail.listType" (change)="selectedItem()">
+        <option *ngFor="let list of likeList" [ngValue]="list.svcSCatgId">
+          {{ list.svcSCatgDesc }}
+        </option>
+      </select>
+    </div>
+    <div class="form-data-in">
+      <label>Property Type
+        <em style="color: red">*</em>
+      </label>
+      <select name="selectedProperty" [(ngModel)]="hostModel.hostStayDetail.propertyType" (change)="selectedItem()">
+        <option *ngFor="let property of properties" [ngValue]="property.svcSCatgId">
+          {{ property.svcSCatgDesc }}
+        </option>
+      </select>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-data">
+    <label>Give a Name to your Listing
+      <em style="color: red">*</em>
+    </label>
+    <input maxlength="1000" type="text" [(ngModel)]="hostModel.hostStayDetail.stayName">
+  </div>
+
+  <div class="form-data">
+    <div class="form-data-in">
+      <label>Total number of Rooms
+        <em style="color: red">*</em>
+      </label>
+      <select name="selectedRooms" [(ngModel)]="hostModel.hostStayDetail.numberOfRooms" (change)="selectedItem()">
+        <option *ngFor="let room of rooms" [ngValue]="room.svcSCatgDesc">
+          {{ room.svcSCatgDesc }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-data-in">
+      <label>Total number of Beds
+        <em style="color: red">*</em>
+      </label>
+      <select name="selectedBed" [(ngModel)]="hostModel.hostStayDetail.numberOfBeds" (change)="selectedItem()">
+        <option *ngFor="let bed of beds" [ngValue]="bed.svcSCatgDesc">
+          {{ bed.svcSCatgDesc }}
+        </option>
+      </select>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-data">
+    <div class="form-data-in">
+      <label>Total number of Bathrooms
+        <em style="color: red">*</em>
+      </label>
+      <select name="selectedBathroom" [(ngModel)]="hostModel.hostStayDetail.numberOfBathRooms" (change)="selectedItem()">
+        <option *ngFor="let bathroom of bathrooms" [ngValue]="bathroom.svcSCatgDesc">
+          {{ bathroom.svcSCatgDesc }}
+        </option>
+      </select>
+    </div>
+    <div class="form-data-in">
+      <label>Max. Guests allowed in each Room
+        <em style="color: red">*</em>
+      </label>
+      <select [(ngModel)]="hostModel.hostStayDetail.numberOfGuestsInRoom">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-data">
+    <div class="form-data-in">
+      <label>Price of each Room
+        <em style="color: red">*</em>
+      </label>
+      <input maxlength="5" OnlyDecimalNumber="true" type="text" [(ngModel)]="hostModel.hostStayDetail.roomPrice" (blur)="hostChargeAddEvent(0)">
+    </div>
+
+    <div class="form-data-in">
+      <label>Cleaning Fee </label>
+      <input (blur)="hostChargeAddEvent(1)" maxlength="5" OnlyDecimalNumber="true" type="text" [(ngModel)]="hostModel.hostStayDetail.cleaningFee">
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

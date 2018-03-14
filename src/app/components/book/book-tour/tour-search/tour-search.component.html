@@ -1,0 +1,120 @@
+<div>
+    Hi Rahul THis is tour search</div>
+
+<div class="homesearchbg">
+    <app-book-tour-search-filter></app-book-tour-search-filter>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="tour-search-tag">
+                <h2>Liamtra Tours</h2>
+            </div>
+        </div>
+
+        <div class="col-lg-12" *ngFor="let tour of bookTours">
+            <div class="tour-search-wrap">
+                <div class="tour-search-wrap-left">
+
+                    <div *ngFor="let attachment of tour.attachments">
+                        <img src="/assets/images/Poster_not_available.jpg" alt="" *ngIf='tour.attachments.length ==0'>
+                        <img src="{{ApiUrl.HOST_URI}}{{attachment.attachmentUrl}}" alt="">
+
+                    </div>
+
+                </div>
+                <div class="tour-search-wrap-mid">
+                    <h3>
+                        <a href="tour-detail.html">{{tour.svcName}}</a>
+                    </h3>
+                    <p>Nov 1st - Nov 5th</p>
+                    <!-- <ul>
+                        <li >Delhi </li>
+                        <li>Pathankout </li>
+                        <li>Mcleodganj </li>
+                    </ul> -->
+
+                    <ul>
+                        <li *ngFor="let routes of tour.hostTourRoutes">
+                            {{routes.cityName}} </li>
+
+                    </ul>
+
+                    <div *ngFor="let services of tour.hostTourServicies">
+                        <div *ngIf = 'services.svcCatgId == 50'>
+                        <div *ngFor = 'let aminity of services.hostServiceLinkingSubCategories' >
+                            <div class="tour-search-service" *ngIf='aminity.svcSCatgId == 203'>
+                                <div class="img-round">
+                                    <img src="images/volvo.png" alt="">
+                                </div>
+                                <span>Volvo</span>
+                            </div>
+                            <div class="tour-search-service" *ngIf='aminity.svcSCatgId == 204'>
+                                <div class="img-round">
+                                    <img src="images/hotel.png" alt="">
+                                </div>
+                                <span>Hotel</span>
+                            </div>
+                            <div class="tour-search-service" *ngIf='aminity.svcSCatgId == 205'>
+                                <div class="img-round">
+                                    <img src="images/sightseeing.png" alt="">
+                                </div>
+                                <span>Sightseeing</span>
+                            </div>
+                            <div class="tour-search-service" *ngIf='aminity.svcSCatgId == 206'>
+                                <div class="img-round">
+                                    <img src="images/meals.png" alt="">
+                                </div>
+                                <span>Meals</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="fb-user-likes">
+                        <div class="fb-user-wrap">
+                            <img src="images/fb-user1.png" alt="">
+                            <span>
+                                <img src="images/fb.png" alt="">377</span>
+                            <label>Friends</label>
+                        </div>
+                        <div class="fb-user-wrap">
+                            <img src="images/fb-user2.png" alt="">
+                            <span>
+                                <img src="images/fb.png" alt="">377</span>
+                            <label>Friends</label>
+                        </div>
+                        <div class="fb-user-wrap">
+                            <img src="images/fb-user3.png" alt="">
+                            <span>
+                                <img src="images/fb.png" alt="">377</span>
+                            <label>Friends</label>
+                        </div>
+                        <div class="fb-user-wrap">
+                            <img src="images/fb-user4.png" alt="">
+                            <span>
+                                <img src="images/fb.png" alt="">377</span>
+                            <label>Friends</label>
+                        </div>
+                        <div class="fb-user-add">+ </div>
+                    </div>
+                </div>
+                <div class="tour-search-wrap-right">
+                    <span>₹ 6,092</span>
+                    <p>Starting price per Traveller</p>
+                    <a href="tour-detail.html">Book Online</a>
+                    <label>2 Seats Left</label>
+                    <div class="travel-itinerory">
+                        <a href="#">Download Travel itinerory</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

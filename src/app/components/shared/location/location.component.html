@@ -1,0 +1,95 @@
+<style>
+  .is-error {
+    left: -5px;
+    background: rgba(215, 102, 102, 0.9);
+    padding: .8em;
+    color: #FFF;
+    font-size: 1rem;
+  }
+</style>
+
+<!-- <div class="form-data">
+  <span class="is-error">All astrick(*) fields are mandatory</span>
+</div> -->
+
+<div class="form-data">
+  <div class="form-data-in">
+    <label>Country
+      <em style="color: red">*</em>
+    </label>
+    <select name="selectedCountry" [(ngModel)]="hostModel.countryId" (change)="getStates(hostModel.countryId)">
+      <option *ngFor="let country of countries" [ngValue]="country.countryId">
+        {{ country.countryName }}
+      </option>
+    </select>
+
+  </div>
+  <div class="form-data-in">
+    <label>State
+      <em style="color: red">*</em>
+    </label>
+    <select name="selectedState" [(ngModel)]="hostModel.stateId" (change)="getCities(hostModel.stateId)">
+      <option *ngFor="let state of states" [ngValue]="state.stateId">
+        {{ state.stateName }}
+      </option>
+    </select>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div class="form-data">
+  <div class="form-data-in">
+    <label>City
+      <em style="color: red">*</em>
+    </label>
+    <select name="selectedCity" [(ngModel)]="hostModel.cityId" (change)="searchMapEvent()">
+      <option *ngFor="let city of cities" [ngValue]="city.cityId">
+        {{ city.cityName }}
+      </option>
+    </select>
+  </div>
+  <div class="form-data-in">
+    <label>Landmark (optional) </label>
+    <input maxlength="1000" type="text" [(ngModel)]="hostModel.landmark">
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div class="form-data">
+  <label>Flat / House No./ Floor/ Building
+    <em style="color: red">*</em>
+  </label>
+  <input maxlength="1000" type="text" [(ngModel)]="hostModel.address1">
+</div>
+
+<div class="form-data">
+  <label>Street / Locality / Colony
+    <em style="color: red">*</em>
+  </label>
+  <input maxlength="1000" type="text" [(ngModel)]="hostModel.address2">
+</div>
+
+<div class="form-data">
+  <label>Pincode
+    <em style="color: red">*</em>
+  </label>
+  <input OnlyDecimalNumber="true" maxlength="6" type="text" [(ngModel)]="hostModel.zipCode">
+</div>
+
+<div class="form-data">
+  <div class="form-data-in">
+    <label>Latitude
+      <em style="color: red">*</em>
+    </label>
+    <input type="text" OnlyDecimalNumber="true" style="display: block;width: 100%;padding: 0 10px;line-height: 45px;background: #fff;border: 1px solid #ccc;font-size: 16px;"
+      maxlength="20" [(ngModel)]="hostModel.latitude" (blur)="searchByCordinate()">
+  </div>
+  <div class="form-data-in">
+    <label>Longitude
+      <em style="color: red">*</em>
+    </label>
+    <input type="text" OnlyDecimalNumber="true" style="display: block;width: 100%;padding: 0 10px;line-height: 45px;background: #fff;border: 1px solid #ccc;font-size: 16px;"
+      maxlength="20" [(ngModel)]="hostModel.longitude" (blur)="searchByCordinate()">
+  </div>
+  <div class="clear"></div>
+</div>

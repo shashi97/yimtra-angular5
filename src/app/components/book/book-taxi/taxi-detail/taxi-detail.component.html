@@ -1,0 +1,119 @@
+<div class="checkoutbg">
+  <div class="blank"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcum_wrap">
+          <a href="home-search.html" class="back-btn">Back to Search Results</a>
+          <a href="car-search.html#" class="btn-search">Modify Search</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="details-ads">
+        <div class="details-left details-left-car">
+          <h3>{{taxiDetail.svcName}}</h3>
+          
+          <div class="clear"></div>
+          <rating [(ngModel)]="taxiDetail.avgReviews" style="float: left;" [max]="5" fullIcon="⭐" emptyIcon="☆" [readonly]="false" [disabled]="true" [float]="true"></rating>
+          <p> /
+            <a> Review ( {{taxiDetail.totalReviews}} ) </a> /
+            <a>Write a review</a>
+          </p>
+
+        </div>
+        <div class="details-right">
+          <strong>Contact Car Host</strong>
+          <p>{{taxiDetail.contactNo}}</p>
+          <p>{{taxiDetail.eMailId}}</p>
+          <p>{{taxiDetail.address1}}, {{taxiDetail.address2}}, {{taxiDetail.zipCode}} , {{taxiDetail.landmark}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 margin-top20 left-checkout">
+      <div class="left-details-setion">
+
+
+        <div class="item left-dtl-slider">
+          <div class="clearfix" style="max-width:100%;">
+            <image-slider [slides]="taxiDetail.images" [sliderCss]="sliderCss"></image-slider>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-lg-4 margin-top20">
+      <div class="right-checkout-wrap">
+
+        <div class="right-checkout-wrap-mid no-border">
+
+
+          <div class="guest_checkin">
+            <span>Name</span>
+            <input type="text">
+          </div>
+          <div class="guest_checkin">
+            <span>Email </span>
+            <input type="text">
+          </div>
+          <div class="guest_checkin">
+            <span>Phome No</span>
+            <input type="text">
+          </div>
+          <div class="guest_checkin">
+            <span>Message</span>
+            <textarea></textarea>
+          </div>
+
+
+
+
+        </div>
+        <div class="right-checkout-price-btm">
+          <a href="home-checkout.html" class="btn-custom">Book Now</a>
+          <a href="#" class="btn-report">Report this Listing</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-12">
+      <div class="list-overview">
+        <a href="#">Profile</a> |
+        <a href="#">Reviews</a>
+
+      </div>
+      <div class="list-overview-wrap">
+        <h3>About Company</h3>
+        <!-- <p>Since 1973, Jericho Terrace has been an icon of the New York catering industry. For three decades, Jericho Terrace
+          has built a reputation on its fine cuisine, impeccable service, elegant ambiance and attention to detail.
+          <br>
+          <br> Jericho Terrace is owned and operated by two generations of the Leone family, the original proprietors, whose
+          dedication and pursuit of excellence have maintained a level of achievement that is second to none.
+          <br>
+          <br> At Jericho Terrace, we want to ensure that your affair surpasses all of your expectations. You will be making
+          countless decisions regarding the style of your affair. Planning means everything and your time is valuable. We
+          will provide you with your own personal event coordinator that will help you create The Elegant Affair. Our event
+          coordinator is available to you at no additional cost. Through our Elegant Affair Program you will be provided
+          with endless creative ideas. Along with professional recommendations always keeping your budget and taste in mind
+          to create the affair you have always dreamed about. You can rest assure that through our Elegant Affair Program
+          all of our preferred vendors have been carefully screened and qualified to meet Jericho Terrace`s high standards.
+        </p> -->        
+        <p>{{taxiDetail.remarks1}}</p>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="map" #location>
+        <app-google-map [mapSearch]="taxiFilterModel.FromRoute" [locationCss]="locationCss"></app-google-map>
+      </div>
+    </div>
+  </div>
+</div>

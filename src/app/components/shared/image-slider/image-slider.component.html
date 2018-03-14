@@ -1,0 +1,17 @@
+<div class="slider" [ngStyle]="heightChangeEvent()">
+    <div class="sliderArrows">
+        <a (click)="backWard()" [ngClass]="imageCssClass()" style="padding-left: 1%">
+            <!-- &lt; -->
+            <img src="assets/images/back-arrow.png">
+        </a>
+        <a (click)="forWard()" [ngClass]="imageCssClass()" style="padding-left: 1%">
+            <!-- &gt; -->
+            <img src="assets/images/right-arrow.png">
+        </a>
+    </div>
+    <ul class="slideShow">
+        <li *ngFor="let li of slides;let index= index" [ngStyle]="sliderShowDisplay(index,li?.hidden)" [ngClass]="li?.classes">
+            <printSlide [meta]="li" [sliderCss]="sliderCss"></printSlide>
+        </li>
+    </ul>
+</div>

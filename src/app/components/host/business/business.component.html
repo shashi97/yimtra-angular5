@@ -1,0 +1,94 @@
+<div class="slider-inn">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul>
+          <li [ngClass]="{'active':stepNumber===1}">
+            <a (click)="tabSwitch(1)">
+              <span>1</span> Vendor Detail</a>
+          </li>
+          <li [ngClass]="{'active':stepNumber===2}">
+            <a (click)="tabSwitch(2)">
+              <span>2</span> Location</a>
+          </li>
+          <li [ngClass]="{'active':stepNumber===3}">
+            <a (click)="tabSwitch(3)">
+              <span>3</span> Vendor Description</a>
+          </li>
+          <li [ngClass]="{'active':stepNumber===4}">
+            <a (click)="tabSwitch(4)">
+              <span>4</span> Upload Images/Videos </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="inner-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8">
+        <div class="form-inner">
+          <div class="form-top">
+            Step {{stepNumber}} of 4
+            <div class="clear"></div>
+          </div>
+
+          <div class="form-inner-in" [hidden]="stepNumber>1">
+            <app-host-detail [hostTypeName]="hostTypeName" [hostModel]="businessModel"></app-host-detail>
+          </div>
+
+          <div class="form-inner-in" [hidden]="stepNumber<2 || stepNumber>2">
+            <h4>Hey Liamtrian</h4>
+            <p>In which city are you hosting the new experience ? </p>
+            <br>
+            <app-location [hostModel]="businessModel" (onSearchElement)="getMapSearch($event)"></app-location>
+          </div>
+
+          <app-vendor-description [businessModel]="businessModel" [hidden]="stepNumber<3 || stepNumber>3"></app-vendor-description>
+
+          <div style="margin-left: 2%" [hidden]="stepNumber<4 || stepNumber>4">
+            <app-attachment-image [hostModel]="businessModel"></app-attachment-image>
+            <app-attachment-video [hostModel]="businessModel"></app-attachment-video>
+
+            <div class="form-data">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="businessModel.isTermAccepted"> Accept Liamtra Terms & condition
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-bottom">
+            <button class="button-back" *ngIf="stepNumber>1" (click)="backButton()">Back</button>
+            <button class="button-next" *ngIf="stepNumber!==4" (click)="nextButton()">Next</button>
+            <button class="button-next" *ngIf="stepNumber===4" (click)="submit()">Agree & countinue</button>
+            <div class="clear"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+        <app-google-map *ngIf="stepNumber===2" [mapSearch]="mapSearchElement" (getCordinatesEvent)="getCordinatesEvent($event)" [locationCss]="mapCss"></app-google-map>
+        <div class="side-con" *ngIf="stepNumber!==2" style="margin-top: 2%">
+          <h5>Grow your business</h5>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+            from 45 BC, making it over 2000 years old.</p>
+
+          <h5>Only Vendor</h5>
+          <p>Contrary to popular belief,</p>
+
+          <h5>Need help?</h5>
+          <p>Connect with us below</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-login-modal *ngIf="modal" (modalPopupEvent)="modalPopupEvent($event)" [modal]="modal" [modalStatus]="modalStatus"></app-login-modal>

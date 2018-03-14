@@ -1,0 +1,52 @@
+<div [ngClass]="{'is-visible':modal === true }"  class="cd-user-modal" style="z-index: 12;">
+
+  <div class="cd-user-modal-container-terms-conditions" style="background-color:white;">
+    <p class="popup-close-button">
+      <img style="width: 4%;" (click)="closeModal()"  src="assets/images/roundCloseIcon.png">
+    </p>
+
+    <div class="cd-switcher">
+      <label class="control-label" style="margin-left: 3%;">Contact Host</label>
+      <div class="col-xs-12">
+          <div style="font-size: large;background-color:white; border: 1px solid #e5e5e5;  overflow: auto; padding: 10px;">
+             <textarea type="text" rows="10" cols="20" style=" overflow-y: scroll;
+             height: 300px;
+            width:100%" maxlength="1000" [(ngModel)]="contactHost.comments"></textarea>
+          </div>
+      </div>
+  </div>
+
+  <div class="social-login">
+    <button style="float: right;
+    margin-right: 1.7%;
+    width: 15%;
+    /* margin-top: -1%; */
+    margin-top: -4px;
+    background-color: green;
+    border: none;
+    color: white;
+    height: 25px;" (click)="sendContactHostMessage()">Send Message</button>
+        <!-- <span class="icon-facebook"></span>Facebook</button> -->
+    <!-- <button (click)="signInWithGoogle()" class="googleplus">
+        <span class="icon-google-plus"></span>Google+</button> -->
+</div>
+    <!-- <ul class="cd-switcher">
+
+      <li>
+        <a style="cursor: pointer" [ngClass]="{'selected':modalStatus === 'signIn'}">Sign in</a>
+      </li>
+      <li>
+        <a style="cursor: pointer" [ngClass]="{'selected':modalStatus === 'signUp'}">New Account</a>
+      </li>
+    </ul>
+
+    <div class="social-login">
+      <button class="facebook">
+        <span class="icon-facebook"></span>Facebook</button>
+      <button class="googleplus">
+        <span class="icon-google-plus"></span>Google+</button>
+    </div> -->
+
+  </div>
+
+</div>

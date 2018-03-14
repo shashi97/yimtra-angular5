@@ -1,0 +1,204 @@
+<div class="homesearchbg">
+  <app-book-unique-search-filter></app-book-unique-search-filter>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 margin-top20">
+      <div class="map-left">
+        <app-google-map [mapSearch]="bookUnique.CityName" [locationCss]="locationCss">
+        </app-google-map>
+      </div>
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showBookingType = !showBookingType">
+          Booking Type
+          <img *ngIf="!showBookingType" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showBookingType" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showBookingType">
+          <div class="collapse-dtl" *ngFor="let bookingType of bookingTypes">
+            <input [checked]="bookingType.isChecked" type="checkbox" (change)="filterUniqueHome(bookingType)">
+            <span>{{bookingType.svcSCatgDesc}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showRoomType = !showRoomType">
+          Room Type
+          <img *ngIf="!showRoomType" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showRoomType" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showRoomType">
+          <div class="collapse-dtl" *ngFor="let roomType of roomTypes">
+            <input [checked]="roomType.isChecked" type="checkbox" (change)="filterUniqueHome(roomType)">
+            <span>{{roomType.svcSCatgDesc}}</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showSize = !showSize">
+          Size
+          <img *ngIf="!showSize" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showSize" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showSize">
+          <div class="size-wrap">
+            <span>Bedrooms</span>
+            <select (change)="onFiltering()" [(ngModel)]="filterBookUniqueHome.NumberOfRooms">
+              <option *ngFor="let bedroom of bedrooms" [ngValue]="bedroom.svcSCatgDesc">{{bedroom.svcSCatgDesc}}</option>
+              <!-- <option>2</option> -->
+            </select>
+          </div>
+          <div class="size-wrap">
+            <span>Bathrooms</span>
+            <select (change)="onFiltering()" [(ngModel)]="filterBookUniqueHome.NumberOfBathRooms">
+              <option *ngFor="let bathroom of bathrooms" [ngValue]="bathroom.svcSCatgDesc">{{bathroom.svcSCatgDesc}}</option>
+
+            </select>
+          </div>
+          <div class="size-wrap">
+            <span>Beds</span>
+            <select (change)="onFiltering()" [(ngModel)]="filterBookUniqueHome.NumberOfBeds">
+              <option *ngFor="let bed of beds" [ngValue]="bed.svcSCatgDesc">{{bed.svcSCatgDesc}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showAmenitie = !showAmenitie">
+          Amenities
+          <img *ngIf="!showAmenitie" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showAmenitie" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showAmenitie">
+          <div class="collapse-dtl" *ngFor="let amenitie of amenities">
+            <input [checked]="amenitie.isChecked" type="checkbox" (change)="filterUniqueHome(amenitie)">
+            <span>{{amenitie.svcSCatgDesc}}</span>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showPrice = !showPrice">
+          Price
+          <img *ngIf="!showPrice" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showPrice" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showPrice">
+          <ion-range-slider #sliderElement type="double" min="0" max="64320" [from]="filterBookUniqueHome.MinRoomPrice" [to]="filterBookUniqueHome.MaxRoomPrice"
+            (onFinish)="OnPriceChange($event)"></ion-range-slider>
+          <!-- <img src="assets/images/range-slider.jpg" alt="" class="img-responsive"> -->
+        </div>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showPropertyType = !showPropertyType">
+          Property Type
+          <img *ngIf="!showPropertyType" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showPropertyType" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showPropertyType">
+          <div class="collapse-dtl" *ngFor="let propertyType of propertyTypes">
+            <input [checked]="propertyType.isChecked" type="checkbox" (change)="filterUniqueHome(propertyType)">
+            <span>{{propertyType.svcSCatgDesc}}</span>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showExperience = !showExperience">
+          Experience
+          <img *ngIf="!showExperience" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showExperience" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showExperience">
+          <div class="collapse-dtl" *ngFor="let experience of experiences">
+            <input [checked]="experience.isChecked" type="checkbox" (change)="filterUniqueHome(experience)">
+            <span>{{experience.svcSCatgDesc}}</span>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-8 margin-top20">
+      <div class="right-sort-wrap">
+        <div class="sort-left">
+          <span>Sort By :</span>
+          <div class="size-wrap">
+            <select (change)="onFiltering()" [(ngModel)]="filterBookUniqueHome.SortId">
+              <option *ngFor="let sortingParam of sortingParams" [ngValue]="sortingParam.svcSCatgId">{{sortingParam.svcSCatgDesc}}</option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="sort-right">
+          <span>1 - 20 of 400+ Listings</span>
+          <a href="#">
+            <img src="assets/images/left-arrow.png" alt="">
+          </a>
+          <a href="#">
+            <img src="assets/images/right-arrow.png" alt="">
+          </a>
+        </div> -->
+
+      </div>
+      <div class="row">
+
+        <div class="col-lg-6" *ngFor="let bookUniqueHomeSearch of bookUniqueHomeSearchData">
+          <div class="right-listing-wrap">
+            <div class="right-listing-top" style="cursor:pointer">
+              <!-- <div class="bx-wrapper" style="max-width: 100%;">
+                <div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 240px;">
+                  <ul class="bxslider" style="width: 3215%; position: relative; transition-duration: 0s; transform: translate3d(-716px, 0px, 0px);">
+                    <li *ngFor="let attachment of bookUniqueHomeSearch.allAttachments" style="float: left; list-style: none; position: relative;width: 358px !important;"
+                      class="bx-clone">
+                      <img src="{{apiUrl.SRC_URI}}{{attachment.attachmentUrl}}" style="height: 240px;width: 358px !important;" alt="" class="img-responsive">
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+              <image-slider [slides]="bookUniqueHomeSearch.images" [sliderCss]="sliderCss"></image-slider>
+              <span>{{bookUniqueHomeSearch.roomPrice | number:'.2-5'}} per night</span>
+              <div class="wishlist" (click)="getHomeSearchDetail(bookUniqueHomeSearch.svcId)">
+                <img src="assets/images/heart.png" alt="">
+              </div>
+            </div>
+            <div class="right-listing-mid">
+              <div class="wishlist-rate" style="margin-top:-1%">
+                <rating [(ngModel)]="bookUniqueHomeSearch.avgReviews" [max]="5" fullIcon="★" emptyIcon="☆" [readonly]="false" [disabled]="true"
+                  [float]="true"></rating>
+                <span>/ {{bookUniqueHomeSearch.totalReviews}}</span>
+              </div>
+              <label style="cursor:pointer" (click)="getHomeSearchDetail(bookUniqueHomeSearch.svcId)">{{bookUniqueHomeSearch.numberOfBeds}} BEDS</label>
+            </div>
+            <a>
+              <p style="cursor:pointer" (click)="getHomeSearchDetail(bookUniqueHomeSearch.svcId)">{{bookUniqueHomeSearch.svcName  | truncate : 40  }}- {{bookUniqueHomeSearch.svcDesc  | truncate : 30 }}</p>
+            </a>
+          </div>
+        </div>
+        <div *ngIf="bookUniqueHomeSearchData && bookUniqueHomeSearchData.length === 0" style="height: 300px">
+          <div class="labeled-block block  offset-right" style="text-align: center;padding-top:20%;height: 100px;">
+            <div class="label" style="color: #455581;font-size: -webkit-xxx-large;">No Unique Home Found</div>
+          </div>
+    
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <app-paginator (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="5" [page]="page" [perPage]="limit"
+            [count]="total"></app-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

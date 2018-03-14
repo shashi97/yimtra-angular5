@@ -1,0 +1,102 @@
+<div id="cd-signup" [ngClass]="{'is-selected':modalStatus === 'signUp' }">
+    <div class="login-left" *ngIf="!mobileDivEnabled && !emailDivEnabled">
+        <p>Create an Account</p>
+        <form class="cd-form">
+            <p *ngIf="combinedErrorMessage" style="color: red">PhoneNo or EmailId is mandatory</p>
+            <p class="fieldset">
+                <label class="image-replace cd-phone">Phone No</label>
+                <input style="padding: 10px 20px 10px 20px;" OnlyDecimalNumber="true" class="full-width has-padding has-border" name="userContactNo"
+                    [(ngModel)]="signUp.userContactNo" id="signup-phone" type="text" placeholder="Phone no" (blur)="loginValidate()"
+                    maxlength="10">
+                <span class="cd-error-message" [ngClass]="{'is-visible':phoneError }">Valid Contact is mandatory</span>
+            </p>
+
+            <div class="or">
+                <div class="line"></div>
+                <strong>Or</strong>
+            </div>
+
+            <p class="fieldset">
+                <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                <input style="padding: 10px 20px 10px 20px;" emailValidate="true" class="full-width has-padding has-border" id="signup-email"
+                    name="signup-email" [(ngModel)]="signUp.userEmail" type="email" placeholder="E-mail" (blur)="loginValidate()"
+                    maxlength="50">
+                <span class="cd-error-message" [ngClass]="{'is-visible': (signUp.userEmail.trim() !== '') && emailError }">
+                    Please enter correct email id</span>
+            </p>
+
+            <p class="fieldset">
+                <input style="padding: 10px 20px 10px 20px;" class="full-width has-padding has-border" id="signup-password" name="signup-password"
+                    [(ngModel)]="signUp.userPwd" type="{{inputType}}" placeholder="Password" maxlength="20">
+                <a *ngIf="passwordShow" class="hide-password" (click)="hidepasswords('hide')" style="cursor:pointer">Hide</a>
+                <a *ngIf="!passwordShow" class="hide-password" (click)="hidepasswords('show')" style="cursor:pointer;padding-left: 11.5px;">Show</a>
+                <!-- <show-hide-password size="lg" icon="entypo">
+                    <label class="image-replace cd-password" for="signup-password">Password</label>
+
+                    <input type="password" class="full-width has-padding has-border" id="signup-password" name="signup-password" [(ngModel)]="signUp.userPwd">
+                </show-hide-password> -->
+                <span class="cd-error-message" [ngClass]="{'is-visible':(signUp.userPwd.trim() === '') && validationError }">
+                    Password is mandatory</span>
+            </p>
+
+            <p class="fieldset">
+                <input type="checkbox" id="accept-terms" [(ngModel)]="signUp.isAgreeTerms" name="isAgreeTerms">
+                <label for="accept-terms">I agree to the</label>
+                <a style="cursor:pointer" (click)="getTermsAndConditions()">Terms & Conditions</a>
+                <span style="margin-left:29%" class="cd-error-message" [ngClass]="{'is-visible':(!signUp.isAgreeTerms) && validationError }">
+                    Please agree the terms & condition
+                </span>
+            </p>
+
+            <p class="fieldset">
+                <input class="full-width has-padding" type="submit" value="Create Account" (click)="saveSignUp()">
+            </p>
+
+        </form>
+        <div class="or">
+            <div class="line"></div>
+            <strong>Or</strong>
+        </div>
+    </div>
+    <div class="login-left" *ngIf="mobileDivEnabled">
+        <!-- <p>Verify Your Mobile Number</p> -->
+        <p style="color:#B3B3B3;">An OTP, has been sent to the entered Mobile Number. Please note, the OTP is valid only for the next 15 Minutes.</p>
+        <form class="cd-form">
+            <p class="fieldset">
+                <input class="full-width has-padding has-border" name="otp" [(ngModel)]="mobileOTP" id="otp" type="password" placeholder="Enter 6-digits OTP"
+                    maxlength="6">
+                <span class="cd-error-message" [ngClass]="{'is-visible':phoneError }">Please enter valid OTP</span>
+            </p>
+            <p class="fieldset">
+                <input class="full-width has-padding" type="submit" value="Submit" (click)="validatePhone()">
+            </p>
+            <p class="fieldset">
+                <a href="#0">Resend OTP</a>
+            </p>
+        </form>
+        <div class="or">
+            <div class="line"></div>
+            <strong>Or</strong>
+        </div>
+
+    </div>
+    <div class="login-left" *ngIf="emailDivEnabled">
+        <p>Verify Your Email Id</p>
+        <p style="color:#727171;font-weight: 700;">An link, has been sent to the entered Email Id. Please note, the link is valid only for the next 15 Minutes.
+        </p>
+        <p style="color:#B3B3B3;margin-bottom: 0;">
+            If you do not receive the confirmation email within the next hour
+        </p>
+        <p style="color:#B3B3B3;margin: 0;">
+            please check your Bulk or Junk Mail folder and
+        </p>
+        <p style="color:#B3B3B3;margin-top: 0;">
+            update your rules to allow emails from "options@liamtra.com".
+        </p>
+        <div class="or">
+            <div class="line"></div>
+            <strong>Or</strong>
+        </div>
+
+    </div>
+</div>

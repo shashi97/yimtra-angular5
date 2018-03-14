@@ -1,0 +1,42 @@
+<h2>Our Top Destinations</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="top-boxs-in">
+        <a href="#">
+          <img style="height:272px; width: 360px" *ngIf="div && div.attachment[0]" src="{{div.attachment[0].attachmentUrl}}">
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="top-boxs-in">
+        <a href="#">
+          <img style="height:280px; width: 750px" *ngIf="div && div.attachment[1]" src="{{div.attachment[1].attachmentUrl}}">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="top-boxs-in">
+        <a href="#">
+          <img style="height:272px; width: 360px" style="height:272px; width: 380px" *ngIf="div && div.attachment[2]" src="{{div.attachment[2].attachmentUrl}}">
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="top-boxs-in">
+        <a href="#">
+          <img style="height:272px; width: 360px" *ngIf="div && div.attachment[3]" src="{{div.attachment[3].attachmentUrl}}">
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="top-boxs-in">
+        <a href="#">
+          <img style="height:272px; width: 360px" *ngIf="div && div.attachment[4]" src="{{div.attachment[4].attachmentUrl}}">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

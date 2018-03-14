@@ -1,0 +1,35 @@
+<app-video-slider *ngIf="div1" [div]="div1">
+</app-video-slider>
+
+<div class="aboutbg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>About Liamtra</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+          specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+          essentially unchanged.</p>
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="top-boxs">
+  <app-home-destination *ngIf="div2.attachment.length>0" [div]="div2"></app-home-destination>
+</div>
+
+<div class="home-exp">
+  <app-home-experience *ngIf="div3.attachment.length>0" [div]="div3"></app-home-experience>
+</div>
+
+<div class="home-deal">
+  <app-home-deal *ngIf="div4.attachment.length>0" [div]="div4"></app-home-deal>
+</div>
+
+<div class="testimonial">
+  <app-home-testimonial *ngIf="div5.review.length>0" [div]="div5"></app-home-testimonial>
+</div>
+
+<app-home-about></app-home-about>

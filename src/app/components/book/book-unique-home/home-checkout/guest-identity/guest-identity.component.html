@@ -1,0 +1,26 @@
+<div class="left-checkout-wrap-head">
+  Provide Your ID </div>
+
+<div class="chkout-add-rules">
+  <p>When your stay in a Unique Home, you are staying at someone's property. Providing Identification can help your host feel
+    more comfortable in sharing the space.</p>
+
+  <br>
+
+  <div class="form-grp">
+    <label>Select your id type
+      <em style="color: red">*</em>
+    </label>
+    <select class="input-text" [(ngModel)]="bookHomeCheckout.bookStay.guestIdType">
+      <option *ngFor="let identityType of identityTypes" [ngValue]="identityType.svcSCatgId">{{identityType.svcSCatgDesc}}</option>
+    </select>
+  </div>
+  <br>
+  <div class="form-grp fileupload">
+    <label>Upload Document
+      <em style="color: red">*</em>
+    </label>
+    <input style="float: right;    margin-right: 14.5%;
+    margin-top: -3%;" type="file" (change)="generateFileData($event)" />
+  </div>
+</div>

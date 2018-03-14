@@ -1,0 +1,19 @@
+<div class="blank"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="home_search_wrap">
+        <input [source]="observableSource.bind(this)" 
+        ngui-auto-complete [(ngModel)]="taxiFilterModel.FromRoute"
+        type="text" class="destination_input-v" placeholder="From"
+         />
+        <input type="text" class="destination_input-v"
+        [source]="observableSources.bind(this)"
+        [(ngModel)]="taxiFilterModel.ToRoute"
+        ngui-auto-complete placeholder="To"
+        />
+        <a (click)="getBookTaxiIndividual()" class="btn-search">Search</a>
+      </div>
+    </div>
+  </div>
+</div>

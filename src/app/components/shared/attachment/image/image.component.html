@@ -1,0 +1,68 @@
+<style>
+  .fileupload {
+    width: 100px;
+    height: 50px;
+    position: relative;
+  }
+
+  .wrap {
+    width: 179px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 11px;
+  }
+
+  .attachment {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ccc;
+  }
+
+  .fileupload input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    font-size: 150px;
+    height: 100px;
+  }
+</style>
+
+<div class="form-data">
+  <label style="padding-left: 30px;">Add Images</label>
+
+  <div class="image-add col-md-12">
+    <ul style="float: left" class="image-add col-md-3">
+      <li class="attachment">
+        <div class="fileupload">
+          <input type="file" (change)="imageUploadEvent($event)" accept="image/*" />
+          <a>+</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="image-add col-md-9">
+      <li class="image-add col-md-3" *ngFor="let file of FileList; let index=index" style="float: left;margin-right: 2%;margin-bottom: 5%"
+        class="attachment">
+        <div>
+          <img class="attachment" style="margin-bottom: 9%;margin-left: -1%;" [src]="file.fileUploadModel.attachmentDataBase64" />
+          <a style="cursor:pointer" (click)="deleteAttachment(index)">
+            <p style="font-size: 15px;padding: 0 0 0px 0px;margin-top: -50%;">
+              <span>S.No - {{index+1}}</span>
+              <img src="../../../../../assets/images/cancel.png " style="height:17px;cursor: pointer"> </p>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>

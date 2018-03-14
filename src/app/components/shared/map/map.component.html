@@ -1,0 +1,11 @@
+<agm-map [minZoom]="10" [ngClass]="location()" [latitude]="latitude" [longitude]="longitude">
+    <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+        <!-- <agm-marker [latitude]="28.7041" [longitude]="77.1025">
+        </agm-marker> -->
+        <!-- <agm-marker [latitude]="19.0760" [longitude]="72.8777">
+        </agm-marker> -->
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (mouseOut)="centerChangeEvent()" [openInfoWindow]="true"
+            (dragEnd)="markerDragEnd($event)">
+        </agm-marker>
+    </agm-marker-cluster>
+</agm-map>

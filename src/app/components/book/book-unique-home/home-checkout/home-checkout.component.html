@@ -1,0 +1,51 @@
+<div class="slider-inn">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul>
+          <li class="active">
+            <a>
+              <span>1</span> REVIEW HOMESTAY & ENTER DETAILS</a>
+          </li>
+          <li>
+            <a>
+              <span>2</span> PAY SECURELY</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 margin-top20 left-checkout">
+      <div class="left-checkout-wrap">
+        <app-guest-entry [bookHomeCheckouts]="bookHomeCheckout"></app-guest-entry>
+      </div>
+      <div class="left-checkout-wrap">
+        <app-guest-identity [bookHomeCheckout]="bookHomeCheckout"></app-guest-identity>
+      </div>
+      <div class="form-data">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="isTermAccepted"> I agree to the
+            <a style="cursor:pointer" (click)="getTermsAndConditions()">Terms & Conditions</a>
+          </label>
+        </div>
+      </div>
+      <div class="left-checkout-wrap">
+        <a (click)="bookUniqueHome()" style="cursor:pointer" class="btn-custom">Agree and Continue</a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 margin-top20">
+      <div class="right-checkout-wrap">
+        <app-guest-book-detail *ngIf="bookingDetails" [bookingDetails]="bookingDetails"></app-guest-book-detail>
+      </div>
+    </div>
+  </div>
+</div>
+<app-terms-and-conditions *ngIf="termAndConditionmodal" [modal]="termAndConditionmodal" (modalPopupEvent)="termsAndConditionsPopupEvent($event)"></app-terms-and-conditions>
+

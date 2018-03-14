@@ -1,0 +1,48 @@
+<div class="all-static">
+  <div class="blank"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <app-book-experience-search-filter (setSearchdata)="onFilterSearch($event)"></app-book-experience-search-filter>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 margin-top20">
+      <div class="right-sort-wrap">
+        <div class="sort-left">
+          <span>Sort By :</span>
+          <div class="size-wrap">
+            <select>
+              <option>Name</option>
+            </select>
+          </div>
+        </div>
+        <div class="sort-right">
+          <span>1 - 20 of 400+ Listings</span>
+          <a href="#">
+            <img src="assets/images/left-arrow.png" alt="">
+          </a>
+          <a href="#">
+            <img src="assets/images/right-arrow.png" alt="">
+          </a>
+        </div>
+      </div>
+
+      <div *ngFor="let item of experiences">
+        <div class="exp-cont-main" >
+          <image-slider style="cursor: pointer" (click)="routeToDetail(item)" [slides]="item.images" [sliderCss]="sliderCss"></image-slider>
+          <span>{{item.svcName}} &amp; {{item.svcDesc}}</span>
+          <strong>{{item.remarks1}}</strong>
+        </div>
+      </div>
+
+      <app-paginator (goPage)="goToPage($event)" (goNext)="onNext()" (goPrev)="onPrev()" [pagesToShow]="5" [page]="page" [perPage]="limit"
+        [count]="total"></app-paginator>
+    </div>
+
+  </div>
+</div>

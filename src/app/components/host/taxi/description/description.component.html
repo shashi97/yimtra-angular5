@@ -1,0 +1,82 @@
+<style>
+  .is-error {
+    left: -5px;
+    background: rgba(215, 102, 102, 0.9);
+    padding: .8em;
+    color: #FFF;
+    font-size: 1rem;
+  }
+</style>
+
+<div class="form-inner-in">
+
+  <div class="form-data">
+    <span class="is-error">All astrick(*) fields are mandatory</span>
+  </div>
+
+  <div class="form-data">
+    <label>Name of business
+      <em style="color: red">*</em>
+    </label>
+    <input OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="taxiModel.remarks1">
+  </div>
+
+  <div class="form-data">
+    <div class="form-data-in" style="margin-right: 11%;">
+      <label>Preferred Route
+        <em style="color: red">*</em>
+      </label>
+    </div>
+    <div class="form-data-in"> </div>
+    <div *ngFor="let item of taxiModel.hostVehicleRoute;let index=index" style="margin-top: 1%">
+      <div class="form-data-in" style="width: 35%;margin-right: 1%">
+        <input placeholder="From" OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="item.fromRoute">
+      </div>
+      <div class="form-data-in" style="width: 22%;margin-right: 1%;float: left;">
+        <input placeholder="To" OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="item.toRoute">
+      </div>
+      <div *ngIf="index===0" class="form-data-in" style="width: 25%;margin-top: -4.4%;">
+        <label>&nbsp;</label>
+        <button class="addd-from" (click)="addRoute(item,index)"> +</button>
+      </div>
+      <div *ngIf="index!==0" class="form-data-in" style="width: 25%;margin-top: -4.4%;">
+        <label>&nbsp;</label>
+        <button class="addd-from" (click)="deleteRoute(index)">-</button>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="form-data">
+    <div *ngFor="let item of taxiModel.hostVehicleRate;let index=index" style="margin-top: 1%">
+      <div class="form-data-in" style="margin-right: 11%;">
+        <label>Vehicle Type
+          <em style="color: red">*</em>
+        </label>
+      </div>
+      <div class="form-data-in"> </div>
+      <div class="form-data-in" style="width: 35%;margin-right: 1%">
+        <select name="selectVehicle" [(ngModel)]="item.vehicleType">
+          <option *ngFor="let vehicleType of vehicleTypes" [ngValue]="vehicleType.svcSCatgId">
+            {{ vehicleType.svcSCatgDesc }}
+          </option>
+        </select>
+      </div>
+      <div class="form-data-in" style="width: 22%;margin-right: 1%;float: left;    margin-top: -4.4%;">
+        <label> Rate/Km
+          <em style="color: red">*</em>
+        </label>
+        <input placeholder="Rate/Km" OnlyDecimalNumber="true" maxlength="5" type="text" [(ngModel)]="item.rate">
+      </div>
+      <div *ngIf="index===0" class="form-data-in" style="width: 25%;margin-top: -4.4%;">
+        <label>&nbsp;</label>
+        <button class="addd-from" (click)="addRate(item,index)">+</button>
+      </div>
+      <div *ngIf="index!==0" class="form-data-in" style="width: 25%;margin-top: -4.4%;">
+        <label>&nbsp;</label>
+        <button class="addd-from" (click)="deleteRate(index)">-</button>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

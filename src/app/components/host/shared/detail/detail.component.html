@@ -1,0 +1,51 @@
+<div class="form-inner-in">
+
+  <!-- <div class="form-data">
+    <span class="is-error">All astrick(*) fields are mandatory</span>
+  </div> -->
+
+  <div class="form-data">
+    <label>{{hostTypeName}}
+      <em style="color: red">*</em>
+    </label>
+    <input OnlyAlphaNumeric="true" type="text" maxlength="200" [(ngModel)]="hostModel.svcName" (blur)="checkValidation('name')">
+  </div>
+
+  <div class="form-data">
+    <label>Describe
+      <em></em>
+    </label>
+    <textarea maxlength="2000" [(ngModel)]="hostModel.svcDesc"></textarea>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-data">
+    <div class="form-data-in">
+      <label>Email Id
+        <em style="color: red">*</em>
+      </label>
+      <input emailValidate="true" type="text" maxlength="100" [(ngModel)]="hostModel.eMailId" (blur)="checkValidation('email')">
+      <!-- <span class="is-error" *ngIf="isEmailInvalid">Valid e-mail is mandatory</span> -->
+    </div>
+    <div class="form-data-in">
+      <label>Phone No
+        <em style="color: red">*</em>
+      </label>
+      <input OnlyDecimalNumber="true" type="text" maxlength="10" [(ngModel)]="hostModel.contactNo" (blur)="checkValidation('phone')">
+      <!-- <span class="is-error" *ngIf="isContactInvalid">Valid contactNo is mandatory</span> -->
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="form-data">
+    <div class="form-data-in">
+      <label>Languages
+        <em style="color: red">*</em>
+      </label>
+      <angular2-multiselect [data]="languages" [(ngModel)]="selectedLanguages" (onSelect)="onLanguageItemSelect($event)" (onDeSelect)="onLanguageItemDeSelect($event)"
+        (onSelectAll)="onLanguageSelectAll($event)" (onDeSelectAll)="onLanguageDeSelectAll($event)">
+      </angular2-multiselect>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</div>

@@ -1,0 +1,40 @@
+
+  <div class="right-checkout-wrap-head">
+      <h3>Homely Rooms in {{bookingDetails.CityName}} </h3>
+      <p>Rooms in Resort | Agauda Candolim Road</p>
+  </div>
+  <div class="right-checkout-wrap-mid">
+      <div class="checkout-price-mid">
+          <div class="left-checkout-price-mid">CHECK-IN</div>
+          <div class="right-checkout-price-mid">{{bookingDetails.CheckIn}}</div>
+      </div>
+      <div class="checkout-price-mid">
+          <div class="left-checkout-price-mid">CHECK-OUT</div>
+          <div class="right-checkout-price-mid">{{bookingDetails.CheckOut}}</div>
+      </div>
+      <div class="checkout-price-mid">
+          <div class="left-checkout-price-mid">STAY DURATION</div>
+          <div class="right-checkout-price-mid">{{bookingDetails.numberOfDays}} NIGHT</div>
+      </div>
+      <div class="checkout-price-mid">
+          <div class="left-checkout-price-mid">ROOMS / GUESTS</div>
+          <div class="right-checkout-price-mid">1 Room {{bookingDetails.NumberofGuestsInRoom}} Adults</div>
+      </div>
+  </div>
+  <div class="right-checkout-wrap-mid">
+      <div class="checkout-price-btm">
+          <!-- <div class="left-checkout-price-mid">Village Royale Studio - Rooms</div> -->
+          <div class="left-checkout-price-mid">Rooms</div>
+          <div class="right-checkout-price-mid">{{bookingDetails.totalPrice | number:'.2-5'}}</div>
+      </div>
+      <div class="checkout-price-btm">
+          <div class="left-checkout-price-mid">GST on Accomodation</div>
+          <div class="right-checkout-price-mid">&#8377; {{GSTPrice | number:'.2-5'}}</div>
+      </div>
+  </div>
+  <div class="right-checkout-price-btm">
+      <div class="checkout-price-btm">
+          <div class="left-total-price-mid">Total Price</div>
+          <div class="right-total-price-mid"><label>{{totalPriceAfterGST | number:'.2-5'}}</label><br />For {{bookingDetails.numberOfDays}} Night</div>
+      </div>                         
+  </div>

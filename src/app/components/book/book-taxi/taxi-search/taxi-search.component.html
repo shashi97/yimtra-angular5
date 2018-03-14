@@ -1,0 +1,119 @@
+<div class="carsearchbg">
+  <app-book-taxi-filter></app-book-taxi-filter>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 margin-top20">
+      <div class="map-left">
+        <app-google-map [mapSearch]="" [locationCss]="locationCss">
+        </app-google-map>
+      </div>
+
+      <div class="collapse-wrap">
+        <div class="collapse-head" (click)="showTaxiType = !showTaxiType">
+          Taxi Type
+          <img *ngIf="!showTaxiType" src="assets/images/down-arrow.png" alt="">
+          <img *ngIf="showTaxiType" src="assets/images/right-arrow.png" alt="">
+        </div>
+        <div class="collapse-dtl-wrap" *ngIf="!showTaxiType">
+          <div class="collapse-dtl">
+            <input type="checkbox" />
+            <span>Hatchback </span>
+          </div>
+          <div class="collapse-dtl">
+            <input type="checkbox" />
+            <span>Sedan </span>
+          </div>
+          <div class="collapse-dtl">
+            <input type="checkbox" />
+            <span>SUV </span>
+          </div>
+          <div class="collapse-dtl">
+            <input type="checkbox" />
+            <span>Traveller 12 </span>
+          </div>
+          <div class="collapse-dtl">
+            <input type="checkbox" />
+            <span>Traveller 15 </span>
+          </div>
+          <div class="collapse-dtl">
+            <input type="checkbox" />
+            <span>Luxury Chauffer </span>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="col-lg-8 margin-top20">
+      <div class="right-sort-wrap">
+        <div class="sort-left">
+          <span>Sort By :</span>
+          <div class="size-wrap">
+            <select>
+              <option>Name</option>
+            </select>
+          </div>
+        </div>
+        <div class="sort-right">
+          <span>1 - 20 of 400+ Listings</span>
+          <a href="#">
+            <img src="assets/images/left-arrow.png" alt="" />
+          </a>
+          <a href="#">
+            <img src="assets/images/right-arrow.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-lg-4 car-search" *ngFor="let taxi of taxiList">
+          <div class="right-listing-wrap">
+            <div class="right-listing-top">
+              <image-slider [slides]="taxi.images" [sliderCss]="sliderCss"></image-slider>
+            </div>
+            <a (click)="getBookTaxiIndividualDetail(taxi.svcId);" >
+              <p style="cursor:pointer">{{taxi.svcName}}- {{taxi.svcDesc}}</p>
+            </a>
+            <div class="right-listing-mid">
+              <div class="wishlist-rate" style="margin-top:-1%">
+                <rating [(ngModel)]="taxi.avgReviews" [max]="5" fullIcon="★" emptyIcon="☆" [readonly]="false" [disabled]="true"
+                [float]="true"></rating>
+                <span>/ {{taxi.totalReviews}}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="row">
+            <div class="col-lg-12">
+            <div class="pagination">
+                <span>1 - 20 of 400+ Listings</span>
+                <ul>
+                    <li><a href="#"><img src="assets/images/left-arrow.png" alt="" /></a></li>
+                    <li><a href="#" class="active">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">16</a></li>
+                    <li><a href="#"><img src="assets/images/right-arrow.png" alt="" /></a></li>
+                </ul>
+            </div>
+        </div>
+        </div> -->
+    </div>
+
+
+
+  </div>
+</div>

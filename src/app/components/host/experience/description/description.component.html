@@ -1,0 +1,38 @@
+<style>
+  .is-error {
+    left: -5px;
+    background: rgba(215, 102, 102, 0.9);
+    padding: .8em;
+    color: #FFF;
+    font-size: 1rem;
+  }
+</style>
+
+<div class="form-inner-in">
+  <div class="form-data">
+    <span class="is-error">All astrick(*) fields are mandatory</span>
+  </div>
+  <div class="form-data">
+    <label>Name Your Experience
+      <em style="color: red">*</em>
+    </label>
+    <input  OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="hostModel.remarks1">
+  </div>
+
+  <div class="form-data">
+    <label> Describe the uniqueness of your experience
+      <em style="color: red">*</em>
+    </label>
+    <textarea  OnlyAlphaNumeric="true" maxlength="200" [(ngModel)]="hostModel.remarks2"></textarea>
+  </div>
+
+  <div class="form-data">
+    <label>What will your Experience be about?
+      <em style="color: red">*</em>
+    </label>
+    <angular2-multiselect [data]="experienceData" [(ngModel)]="selectedExperience" (onSelect)="onExperienceItemSelect($event)"
+      (onDeSelect)="OnExperienceItemDeSelect($event)" (onSelectAll)="onExperienceSelectAll($event)" (onDeSelectAll)="onExperienceDeSelectAll($event)">
+    </angular2-multiselect>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+<!-- <div class="cl-slider-home">
+  <div class="slider-menu-in">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Book Unique homes online</h1>
+          <h2>Deep discount on 17000+ Unique Home's in India</h2>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+<style>
+  destination_input {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+</style>
+
+<div class="blank"></div>
+<div class="container">
+    <!-- min-chars="2" -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="home_search_wrap">
+        <input class="destination_input"
+        max-num-list="10"
+        loading-text="Getting City List..."        
+        ngui-auto-complete placeholder="Enter a City Name" [(ngModel)]="bookUnique.CityName"
+        [source]="observableSource.bind(this)" open-on-focus="false"
+        no-match-found-text="No City Found" required />
+        <div class="calender_wrap">
+          <mat-form-field>
+            <input matInput [matDatepicker]="checkIn" [min]="minDateForDatepicker" (click)="checkIn.open()" [(ngModel)]="bookUnique.CheckIn"
+              placeholder="Check In" readonly="readonly">
+            <mat-datepicker-toggle matSuffix [for]="checkIn"></mat-datepicker-toggle>
+            <mat-datepicker #checkIn disabled="false" touchUi="true"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="calender_wrap">
+          <mat-form-field>
+            <input matInput [matDatepicker]="checkOut" [min]="bookUnique.CheckIn" [(ngModel)]="bookUnique.CheckOut" placeholder="Check Out"
+              (click)="checkOut.open()" readonly="readonly">
+            <mat-datepicker-toggle matSuffix [for]="checkOut"></mat-datepicker-toggle>
+            <mat-datepicker #checkOut disabled="false" touchUi="true"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <select class="guest_select" name="selectedTechs" [(ngModel)]="bookUnique.NumberofGuestsInRoom">
+          <option [ngValue]="0" disabled selected>Guest</option>
+          <option *ngFor="let totalGuest of totalGuests" [ngValue]="totalGuest.svcSCatgDesc">{{totalGuest.svcSCatgDesc}}</option>
+        </select>
+        <a class="btn-search" (click)="getBookIndividual()">Search</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- </div> -->
+<!-- <div class="top-boxs">
+  <app-home-destination></app-home-destination>
+</div>
+<div class="home-exp">
+  <app-home-experience></app-home-experience>
+</div>
+<div class="home-deal">
+  <app-home-deal></app-home-deal>
+</div>
+<div class="testimonial">
+  <app-home-testimonial></app-home-testimonial>
+</div>
+<app-home-about></app-home-about> -->

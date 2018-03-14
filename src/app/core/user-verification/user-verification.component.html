@@ -1,0 +1,147 @@
+<div class="all-static">
+    <div class="blank"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Blog</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!isReset">
+    <div class="container" *ngIf="status">
+        <div class="row">
+            <div class="col-lg-2">
+                <img src="assets/images/email-verify.png" style="height: 100px;width: 100px">
+            </div>
+            <div class="col-lg-9">
+                <p style="color:#B3B3B3;font-weight: 700;font-size: x-large;margin-top: 3%;margin-left: -7%;">
+                    Welcome, Your account has been activated, and you are signed-in now.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+            </div>
+            <div class="col-lg-2">
+                <a style="cursor: pointer" class="btn-search" (click)="saveUseretail()">Save</a>
+            </div>
+            <div class="col-lg-2">
+                <a style="cursor: pointer" class="btn-search" (click)="skipDetail()">Skip</a>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 10px">
+            <div class="col-lg-12">
+
+                <p style="color:#B3B3B3;font-weight: 700;font-size: larger;margin-bottom: 2%;">
+                    Please complete your profile information
+                </p>
+
+                <div class="form-data">
+                    <div class="form-data-in">
+                        <label>User First Name
+                            <em style="color: red">*</em>
+                        </label>
+                        <input OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="user.UserFirstName">
+                    </div>
+                    <div class="form-data-in">
+                        <label>User Middle Name </label>
+                        <input OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="user.UserMiddleName">
+                    </div>
+                    <div class="form-data-in">
+                        <label>User Last Name
+                            <em style="color: red">*</em>
+                        </label>
+                        <input OnlyAlphaNumeric="true" maxlength="20" type="text" [(ngModel)]="user.UserLastName">
+                    </div>
+                    <div class="form-data-in">
+                        <label>User Email
+                            <em style="color: red">*</em>
+                        </label>
+                        <input emailValidate="true" maxlength="50" [disabled]="emailDisabled" type="text" [(ngModel)]="user.UserEmail">
+                    </div>
+                    <div class="form-data-in">
+                        <label>User Contact No
+                            <em style="color: red">*</em>
+                        </label>
+                        <input OnlyDecimalNumber="true" maxlength="10" [disabled]="mobilelDisabled" type="text" [(ngModel)]="user.UserContactNo">
+                    </div>
+                    <div class="form-data-in">
+                        <label>Gender
+                            <em style="color: red">*</em>
+                        </label>
+                        <select name="selectedGender" [(ngModel)]="user.Gender">
+                            <option *ngFor="let item of gender" [ngValue]="item.svcSCatgId">
+                                {{ item.svcSCatgDesc }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="!status">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="assets/images/email-invalid.png">
+            </div>
+            <div class="col-lg-9">
+                <p style="color:#B3B3B3;font-weight: 700;font-size: xx-large;margin-top: 10%;">
+                    Email-Id/MobileNo is not verified. Please try again later!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isReset">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <img src="assets/images/email-verify.png" style="height: 100px;width: 100px">
+            </div>
+            <div class="col-lg-9">
+                <p style="color:#B3B3B3;font-weight: 700;font-size: x-large;margin-top: 3%;margin-left: -7%;">
+                    Change your password
+                </p>
+            </div>
+        </div>
+        <div class="row" style="font-size: large">
+            <div class="col-lg-4" style="text-align: right">
+                <label>Pasword
+                    <em style="color: red">*</em>
+                </label>
+            </div>
+            <div class="col-lg-4">
+                <input maxlength="20" type="password" [(ngModel)]="user.UserPwd">
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row" style="font-size: large;margin-top:2%">
+            <div class="col-lg-4" style="text-align: right">
+                <label>Confirm Pasword
+                    <em style="color: red">*</em>
+                </label>
+            </div>
+            <div class="col-lg-4">
+                <input maxlength="20" type="password" [(ngModel)]="rePassword">
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row" style="margin-top: 2%;margin-bottom: 2%">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+                <a style="cursor: pointer" class="btn-search" (click)="updatePassword()">Update Password</a>
+            </div>
+            <div class="col-lg-3" style="padding-right: 14%">
+                <a style="cursor: pointer" class="btn-search" (click)="cancel()">Cancel</a>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row"></div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="cl-slider-home" *ngIf="src" [ngStyle]="{'background': 'url(' + src +')'}">
+  <div class="slider-menu-in">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1>Book Unique homes online</h1>
+          <h2>Deep discount on 17000+ Unique Home's in India</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cl-slider-home-in">
+    <app-book-unique-search-filter></app-book-unique-search-filter>
+  </div>
+</div>
+<div class="top-boxs">
+  <app-home-destination *ngIf="div2 && div2.attachment.length>0" [div]="div2"></app-home-destination>
+</div>
+<div class="home-exp">
+  <app-home-experience *ngIf="div4 && div4.attachment.length>0" [div]="div4"></app-home-experience>
+</div>
+<div class="home-deal">
+  <app-home-deal *ngIf="div4 && div4.attachment.length>0" [div]="div4"></app-home-deal>
+</div>
+<div class="testimonial">
+  <app-home-testimonial *ngIf="div5 && div5.review.length>0" [div]="div5"></app-home-testimonial>
+</div>
+<app-home-about></app-home-about>

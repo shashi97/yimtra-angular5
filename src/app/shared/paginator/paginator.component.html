@@ -1,0 +1,39 @@
+<!-- <div class="pagination" *ngIf="count > 0">
+    <span>{{ getMin() }} of {{ getMax() }} of {{ count }}</span>
+    <br>
+    <span>{{ totalPages() }} pages</span>
+    <button (click)="onPrev()" [disabled]="page === 1 || loading">Previous</button>
+    <button *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)">1</button>
+    <button (click)="onNext()" [disabled]="lastPage() || loading">Next</button>
+</div> -->
+<style>
+    .button {
+        cursor: pointer;
+        color: #000;
+        font-size: 16px;
+        text-decoration: none;
+        background: #f1f1f1;
+        border: 1px solid #bababa;
+        width: 34px;
+        height: 34px;
+        display: inline-block;
+        text-align: center;
+        line-height: 34px;
+        float: right;
+    }
+</style>
+
+<div class="pagination" *ngIf="count > 0">
+    <span>{{ getMin() }} - {{ getMax() }} of {{ count }} Listings</span>
+    <a (click)="onPrev()" [hidden]="page === 1 || loading" class="button">
+        <img src="assets/images/left-arrow.png" alt="">
+    </a>
+    <ul *ngFor="let pageNum of getPages()">
+        <li>
+            <a style="cursor: pointer" [ngClass]="activeCssClass(pageNum)" (click)="onPage(pageNum)">{{pageNum}}</a>
+        </li>
+    </ul>
+    <a class="button" (click)="onNext()" [hidden]="lastPage() || loading">
+        <img src="assets/images/right-arrow.png" alt="">
+    </a>
+</div>

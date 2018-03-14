@@ -1,0 +1,31 @@
+
+<div>ahul filter></div>
+
+<style>
+        destination_input {
+          max-height: 200px;
+          overflow-y: auto;
+          width:100%;
+        }
+      </style>
+      
+      <div class="blank"></div>
+      <div class="container">
+      
+        <div class="row">
+          <div class="col-lg-12 ">
+            <div class="home_search_wrap">
+              <input class="destination_input" style="max-height: 200px;overflow-y: auto;" ngui-auto-complete [(ngModel)]="bookTourFilterModel.cityName"
+                [source]="observableSource.bind(this)" />
+
+              <select class="guest_select" name="selectedTechs" [(ngModel)]="bookTourFilterModel.monthValue">
+                <option [ngValue]="0" disabled selected>Month</option>
+                <option *ngFor="let month of months" [ngValue]="month.value">{{month.label}}</option>
+              </select>
+          
+              <a class="btn-search" (click)="getBookTours()">Search</a>
+            
+            </div>
+          </div>
+        </div>
+      </div>

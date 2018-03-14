@@ -1,0 +1,31 @@
+<div [ngClass]="{'is-visible':modal === true }" class="cd-user-modal" style="z-index: 12;">
+
+    <div class="cd-user-modal-container " (clickOutside)="onClickOutside($event)">
+        <p class="popup-close-button">
+            <img style="width: 4%;" (click)="closeModal($event)" src="assets/images/roundCloseIcon.png">
+        </p>
+        <ul class="cd-switcher">
+
+            <li>
+                <a style="cursor: pointer" [ngClass]="{'selected':modalStatus === 'signIn' }" (click)="switchModal('signIn')">Sign in</a>
+            </li>
+            <li>
+                <a style="cursor: pointer" [ngClass]="{'selected':modalStatus === 'signUp' }" (click)="switchModal('signUp')">New Account</a>
+            </li>
+        </ul>
+
+
+
+        <app-sign-in [modalStatus]="modalStatus" (closeModal)="closeModal($event)"></app-sign-in>
+        <app-sign-up [modalStatus]="modalStatus" (closeModal)="closeModal($event)" (termsAndConditionsModal)="termsAndConditionsPopupEvent($event)"></app-sign-up>
+
+        <div class="social-login">
+            <button (click)="signInWithFB()" class="facebook">
+                <span class="icon-facebook"></span>Facebook</button>
+            <button (click)="signInWithGoogle()" class="googleplus">
+                <span class="icon-google-plus"></span>Google+</button>
+        </div>
+
+    </div>
+</div>
+<app-terms-and-conditions *ngIf="agreementModal" [modal]="agreementModal" (modalPopupEvent)="termsAndConditionsPopupEvent($event)"></app-terms-and-conditions>
